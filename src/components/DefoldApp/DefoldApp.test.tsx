@@ -7,7 +7,7 @@ import DefoldApp from './DefoldApp';
 describe('DefoldApp Component', () => {
   it('renders', async () => {
     render(
-      <DefoldApp root="/meteoroids" app="meoteoroids" width={640} height={1136} />
+      <DefoldApp root="/app/js-web/react-defold" app="reactdefold" width={640} height={360} />
     )
 
     screen.debug();
