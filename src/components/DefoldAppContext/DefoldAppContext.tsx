@@ -76,7 +76,7 @@ export const useDefoldAppContext = ({ onReceive }: { onReceive?: (command: strin
 
   useEffect(() => {
     if (onReceive && context) context.onReceive = onReceive;
-  }, [onReceive]);
+  }, [context, onReceive]);
 
   const send = useCallback((command: string, payload: Record<string, unknown>) => {
     if (context) context.outbound.push({ command, payload });
