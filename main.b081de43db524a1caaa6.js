@@ -3258,7 +3258,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = ({"NODE_ENV":"production","PUBLIC_URL":""}).DEBUG;
+    r = ({"NODE_ENV":"production","PUBLIC_URL":"."}).DEBUG;
   }
 
   return r;
@@ -33777,7 +33777,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = ({"NODE_ENV":"production","PUBLIC_URL":""}).DEBUG;
+    r = ({"NODE_ENV":"production","PUBLIC_URL":"."}).DEBUG;
   }
 
   return r;
@@ -35146,7 +35146,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = ({"NODE_ENV":"production","PUBLIC_URL":""}).DEBUG;
+    r = ({"NODE_ENV":"production","PUBLIC_URL":"."}).DEBUG;
   }
 
   return r;
@@ -36383,4 +36383,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.b82b1c4f8c2064a6389c.js.map
+//# sourceMappingURL=main.b081de43db524a1caaa6.js.map
