@@ -1,4 +1,5 @@
 {
+  "publicUrl": "./",
   "staticPath": "public",
   "watchDirs": ["src"],
   "webpack": {
