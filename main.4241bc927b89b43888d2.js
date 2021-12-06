@@ -35601,7 +35601,7 @@ function _interopRequireDefault(obj) {
     };
 }
 var _default = _react.default.createElement(_.DefoldApp, {
-    root: "/app/js-web/react-defold",
+    root: "./app/js-web/react-defold",
     app: "reactdefold",
     width: 640,
     height: 360
@@ -35888,7 +35888,7 @@ var _default = function() {
             color
         ]);
         return _react.default.createElement(_defoldApp.DefoldApp, {
-            root: "/app/js-web/react-defold",
+            root: "./app/js-web/react-defold",
             app: "reactdefold",
             width: 640,
             height: 360
@@ -36383,4 +36383,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.b081de43db524a1caaa6.js.map
+//# sourceMappingURL=main.4241bc927b89b43888d2.js.map
