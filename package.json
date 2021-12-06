@@ -18,12 +18,13 @@
     "not dead"
   ],
   "scripts": {
+    "prebuild": "rimraf dist/*",
     "build": "webpack --config webpack.lib.js --mode production",
-    "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist/@types --skipLibCheck --excludeFiles '**/*.test.ts'",
+    "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist/@types --skipLibCheck && rimraf dist/@types/hooks",
     "docs": "rollup -c ./docs/rollup.config.js -w & npx serve ./docs -n",
     "docs:build": "rollup -c ./docs/rollup.config.js",
     "cosmos": "cosmos",
-    "cosmos:export": "cosmos-export",
+    "cosmos:build": "cosmos-export",
     "test": "jest -c jest.config.js --watchAll",
     "test:build": "jest -c jest.config.js"
   },
@@ -48,6 +49,7 @@
     "react": "^17.0.2",
     "react-cosmos": "^5.6.5",
     "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.60.2",
     "rollup-plugin-dts": "^4.0.1",
     "rollup-plugin-replace": "^2.2.0",
