@@ -5,7 +5,6 @@
       "tsx": true
     },
     "target": "es5",
-    "loose": true,
     "minify": {
       "compress": false,
       "mangle": false
@@ -14,5 +13,6 @@
   "module": {
     "type": "commonjs"
   },
-  "minify": false
+  "minify": false,
+  "sourceMaps": true
 }
