@@ -2,7 +2,7 @@ local JSON = require("modules.json")
 
 function init(self)
 	self.has_context = html5 and html5.run("window.DefoldApp")
-	if html5 then print(sys.get_sys_info().system_name, html5.run("window.DefoldApp")) end
+	if html5 then print("react-defold --", sys.get_sys_info().system_name, html5.run("window.DefoldApp")) end
 	msg.post(".", "acquire_input_focus")
 	msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 end
