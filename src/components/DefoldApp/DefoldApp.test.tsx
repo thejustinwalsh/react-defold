@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import {screen} from '@testing-library/dom'
 
-import DefoldApp from './DefoldApp';
+import { DefoldApp } from './DefoldApp';
 
 describe('DefoldApp Component', () => {
   it('renders', async () => {

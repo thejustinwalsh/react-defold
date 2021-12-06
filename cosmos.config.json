@@ -1,0 +1,8 @@
+{
+  "staticPath": "public",
+  "watchDirs": ["src"],
+  "webpack": {
+    "includeHashInOutputFilename": true,
+    "overridePath": "./webpack.override.js"
+  }
+}

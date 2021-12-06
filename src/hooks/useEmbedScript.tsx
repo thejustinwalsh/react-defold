@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function useEmbedScript(script: string, ref?: React.MutableRefObject<null>, external: boolean = true, timeout = 5000) {
+export function useEmbedScript(script: string, ref?: React.MutableRefObject<null>, external: boolean = true, timeout = 5000) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 

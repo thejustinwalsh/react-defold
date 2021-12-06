@@ -11,7 +11,9 @@ function update(self, dt)
 	if (self.has_context) then
 		local msg = {}
 		local raw = html5.run("window.DefoldApp.out()");
+		print("message", raw);
 		if raw ~= '' then msg = JSON.decode(raw) end
+		print("decode", msg);
 		if msg.command == 'tint' then
 			go.set("#background", "tint", vmath.vector4(msg.payload.r, msg.payload.g, msg.payload.b, 1))
 		end
@@ -24,7 +26,7 @@ function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		if (self.has_context) then
 			local command = { command = "touch", payload = { x = action.x, y = action.y } };
-			html5.run("window.DefoldApp.in(" .. JSON.encode(command) .. ")")
+			html5.run("window.DefoldApp.in('" .. JSON.encode(command) .. "')")
 		end
 	end
 end

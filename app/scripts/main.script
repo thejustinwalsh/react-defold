@@ -1,5 +1,0 @@
-
-function init(self)
-	self.is_html5 = sys.get_sys_info().system_name == "HTML5"
-end
-

@@ -34,21 +34,19 @@ export type DefoldAppContextProviderProps = React.PropsWithChildren<{
   namespace: string,
   /** Data to store on the window object under the namespace */
   data: Record<string, unknown>,
-  /** Callback function fired when messages are received from the defold app */
-  onReceive?: (command: string, payload: Record<string, unknown>) => void,
 }>
 
 const DefoldAppContext = React.createContext<DefoldAppContext | undefined>(undefined);
 
 export const DefoldAppContextProvider: React.FC<DefoldAppContextProviderProps> = memo(
-  function DefoldAppContextProvider({namespace, data, onReceive, children}) {
+  function DefoldAppContextProvider({namespace, data, children}) {
     const ref = useRef(data)
     const [context] = useState<DefoldAppContext>({
       namespace,
       inbound: [],
       outbound: [],
       data: ref,
-      onReceive: onReceive ?? (() => {}),
+      onReceive: () => {},
     });
 
     // Store the context in the window object for access from Defold
@@ -73,12 +71,17 @@ export const DefoldAppContextProvider: React.FC<DefoldAppContextProviderProps> =
   }
 );
 
-export const useDefoldAppContext = () => {
+export const useDefoldAppContext = ({ onReceive }: { onReceive?: (command: string, payload: Record<string, unknown>) => void }) => {
   const context = React.useContext(DefoldAppContext);
+
+  useEffect(() => {
+    if (onReceive && context) context.onReceive = onReceive;
+  }, [onReceive]);
 
   const send = useCallback((command: string, payload: Record<string, unknown>) => {
     if (context) context.outbound.push({ command, payload });
   }, [context]);
+
   
   if (context === undefined) throw new Error('useDefoldAppContext must be used within a useDefoldAppContext')
   return { data: context.data.current, send };
