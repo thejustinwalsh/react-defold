@@ -1,14 +1,28 @@
 {
   "name": "react-defold",
   "version": "0.1.0",
-  "description": "defold component for react",
-  "author": "Justin Walsh",
-  "license": "MIT",
+  "description": "Defold component for react",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.{js,d.ts}"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejustinwalsh/react-defold.git"
+  },
+  "keywords": [
+    "typescript",
+    "lua",
+    "defold",
+    "react"
+  ],
+  "author": "Justin Walsh (@thejustinwalsh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thejustinwalsh/react-defold/issues"
+  },
+  "homepage": "https://github.com/thejustinwalsh/react-defold#readme",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -20,7 +34,7 @@
   "scripts": {
     "prebuild": "rimraf dist/*",
     "build": "webpack --config webpack.lib.js --mode production",
-    "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist/@types --skipLibCheck && rimraf dist/@types/hooks",
+    "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist --skipLibCheck && rimraf dist/hooks",
     "docs": "rollup -c ./docs/rollup.config.js -w & npx serve ./docs -n",
     "docs:build": "rollup -c ./docs/rollup.config.js",
     "cosmos": "cosmos",
