@@ -35718,6 +35718,8 @@ var DefoldApp = (0, _react).memo(function DefoldApp(param) {
         styles.innerHTML = "\n        canvas:focus, canvas:active {\n          outline: none;\n          border: 0;\n          ie-dummy: expression(this.hideFocus=true);\n          -moz-outline-style: none;\n        }\n      \n        #".concat(id, "-container, #defold-progress {\n          -webkit-tap-highlight-color: rgba(0,0,0,0);\n          -webkit-touch-callout: none;\n          -webkit-user-select: none;\n          -khtml-user-select: none;\n          -moz-user-select: none;\n          -ms-user-select: none;\n          user-select: none;\n        }\n      \n        .canvas-app-progress {\n          position: absolute;\n          background-color: #d1dbeb;\n          height: 6px;\n          margin-top: -6px;\n          width: 100%;\n        }\n      \n        .canvas-app-progress-bar {\n          font-size: 12px;\n          height: 6px;\n          color: rgb(255, 255, 255);\n          background-color: #1a72eb;\n          text-align: center;\n          line-height: 20px;\n        }\n      ");
         (ref3 = parent.current) === null || ref3 === void 0 ? void 0 : ref3.appendChild(styles);
         loadApp();
+        return function() {
+        };
     }, [
         complete
     ]);
@@ -36112,6 +36114,7 @@ function useEmbedScript(script, ref) {
         var loader = document.createElement('script');
         loader.type = 'text/javascript';
         loader.async = true;
+        loader.defer = true;
         loader.src = script;
         loader.onload = handleReadyStateChange;
         var parent = ref && ref.current ? ref.current : document.body;
@@ -36119,7 +36122,8 @@ function useEmbedScript(script, ref) {
         var exists = scripts.find(function(s) {
             return s.src === script;
         });
-        if (!exists) parent.appendChild(loader);
+        if (exists) exists.remove();
+        parent.appendChild(loader);
         var errorTimer = setTimeout(function() {
             setError(true);
         }, timeout);
@@ -36383,4 +36387,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.4241bc927b89b43888d2.js.map
+//# sourceMappingURL=main.9ae200d853a5152a14d1.js.map
