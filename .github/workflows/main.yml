@@ -21,6 +21,6 @@ jobs:
           
       - name: Publish 🚀
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
