@@ -12,13 +12,15 @@ export function useEmbedScript(script: string, ref?: React.MutableRefObject<null
 
     loader.type = 'text/javascript';
     loader.async = true;
+    loader.defer = true;
     loader.src = script;
     loader.onload = handleReadyStateChange;
     
     const parent = ref && ref.current ? ref.current : document.body;
     const scripts = Array.from(parent.getElementsByTagName('script'));
     const exists = scripts.find(s => s.src === script);
-    if (!exists) parent.appendChild(loader);
+    if (exists) exists.remove();
+    parent.appendChild(loader);
 
     const errorTimer = setTimeout(() => {
       setError(true);

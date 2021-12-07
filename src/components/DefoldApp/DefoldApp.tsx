@@ -3,12 +3,23 @@ import { useEmbedScript} from "../../hooks/useEmbedScript";
 
 declare global {
   interface Window {
-    Module?: any;
+    FileLoader?: any;
     EngineLoader?: EngineLoader;
+    GameArchiveLoader?: any;
+    Progress?: any;
+    CanvasInput?: any;
+    Module?: Module;
   }
 
   interface EngineLoader {
     load: (id: string, root: string) => void;
+  }
+
+  interface Module {
+    calledRun: boolean;
+    pauseMainLoop: () => void;
+    runApp: (id: string, params: unknown) => void;
+    [key: string]: any;
   }
 }
 
@@ -110,6 +121,20 @@ export const DefoldApp: React.FC<DefoldAppProps> = memo(
 
       // Load the app
       loadApp();
+
+      return((): void => {
+        /*
+        if (window.Module?.calledRun) {
+          window.Module?.pauseMainLoop();
+          if (window.Module) window.Module = undefined;
+          if (window.EngineLoader) window.EngineLoader = undefined;
+          if (window.FileLoader) window.FileLoader = undefined;
+          if (window.GameArchiveLoader) window.GameArchiveLoader = undefined;
+          if (window.Progress) window.Progress = undefined;
+          if (window.CanvasInput) window.CanvasInput = undefined;
+        }
+        */
+      });
     }, [complete]);
     
     return (
