@@ -85,32 +85,32 @@ The basic flow of message passing:
 local JSON = require("modules.json")
 
 function init(self)
-	self.has_context = html5 and html5.run("window.DefoldApp")
-	if html5 then print("react-defold --", sys.get_sys_info().system_name, html5.run("window.DefoldApp")) end
-	msg.post(".", "acquire_input_focus")
-	msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
+  self.has_context = html5 and html5.run("window.DefoldApp")
+  if html5 then print("react-defold --", sys.get_sys_info().system_name, html5.run("window.DefoldApp")) end
+  msg.post(".", "acquire_input_focus")
+  msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 end
 
 function update(self, dt)
-	if (self.has_context) then
-		local msg = {}
-		local raw = html5.run("window.DefoldApp.out()");
-		if raw ~= '' then msg = JSON.decode(raw) end
-		if msg.command == 'tint' then
-			go.set("#background", "tint", vmath.vector4(msg.payload.r, msg.payload.g, msg.payload.b, 1))
-		end
+  if (self.has_context) then
+    local msg = {}
+    local raw = html5.run("window.DefoldApp.out()");
+    if raw ~= '' then msg = JSON.decode(raw) end
+    if msg.command == 'tint' then
+      go.set("#background", "tint", vmath.vector4(msg.payload.r, msg.payload.g, msg.payload.b, 1))
+    end
 
-		html5.run("window.DefoldApp.tick()")
-	end
+    html5.run("window.DefoldApp.tick()")
+  end
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.pressed then
-		if (self.has_context) then
-			local command = { command = "touch", payload = { x = action.x, y = action.y } };
-			html5.run("window.DefoldApp.in('" .. JSON.encode(command) .. "')")
-		end
-	end
+  if action_id == hash("touch") and action.pressed then
+    if (self.has_context) then
+      local command = { command = "touch", payload = { x = action.x, y = action.y } };
+      html5.run("window.DefoldApp.in('" .. JSON.encode(command) .. "')")
+    end
+  end
 end
 
 ```
