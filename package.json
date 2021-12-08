@@ -2,9 +2,8 @@
   "name": "react-defold",
   "version": "0.1.8",
   "description": "Defold component for react",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*.{js,js.map,d.ts}"
   ],
@@ -35,12 +34,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist/*",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "webpack --config webpack.lib.js --mode production",
-    "build:esm": "tsc -p tsconfig.json",
-    "postbuild": "rimraf dist/types/hooks",
-    "docs": "rollup -c ./docs/rollup.config.js -w & npx serve ./docs -n",
-    "docs:build": "rollup -c ./docs/rollup.config.js",
+    "build": "rollup --config",
     "cosmos": "cosmos",
     "cosmos:build": "cosmos-export",
     "test": "jest -c jest.config.js --watchAll",
@@ -50,9 +44,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-typescript": "^8.3.0",
     "@swc/cli": "^0.1.52",
     "@swc/core": "^1.2.118",
     "@swc/jest": "^0.2.11",
@@ -69,8 +61,8 @@
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.60.2",
-    "rollup-plugin-dts": "^4.0.1",
-    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.31.1",
     "swc-loader": "^0.1.15",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
