@@ -23,7 +23,7 @@ declare global {
   }
 }
 
-export interface DefoldAppProps {
+interface DefoldAppProps {
   /** The root path to the compiled defold app (parent directory) */
   root: string;
   /** The name od the defold app */
@@ -38,7 +38,7 @@ export interface DefoldAppProps {
 
 let UniqueCanvasId = 0;
 
-export const DefoldApp: React.FC<DefoldAppProps> = memo(
+const DefoldApp: React.FC<DefoldAppProps> = memo(
   function DefoldApp({ root, app, width, height, fullscreen = false }) {
     const [ id ] = useState(() => `canvas-${UniqueCanvasId++}`);
     const canvas = useRef<HTMLCanvasElement>(null);
@@ -139,3 +139,6 @@ export const DefoldApp: React.FC<DefoldAppProps> = memo(
     )
   }
 );
+
+export { DefoldApp };
+export type { DefoldAppProps };

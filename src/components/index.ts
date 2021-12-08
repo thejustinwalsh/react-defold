@@ -1,2 +1,2 @@
-export { DefoldApp } from './DefoldApp';
-export { DefoldAppContextProvider, useDefoldAppContext} from './DefoldAppContext';
+export * from './DefoldApp';
+export * from './DefoldAppContext';

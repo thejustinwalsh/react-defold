@@ -11,7 +11,7 @@
     }
   },
   "module": {
-    "type": "commonjs"
+    "type": "umd"
   },
   "minify": false,
   "sourceMaps": true

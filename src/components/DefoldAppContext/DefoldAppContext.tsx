@@ -29,7 +29,7 @@ interface DefoldAppContext {
   onReceive: (command: string, payload: Record<string, unknown>) => void;
 }
 
-export type DefoldAppContextProviderProps = React.PropsWithChildren<{ 
+type DefoldAppContextProviderProps = React.PropsWithChildren<{ 
   /** The namespace of the app context stored on the window object. */
   namespace: string,
   /** Data to store on the window object under the namespace */
@@ -38,7 +38,7 @@ export type DefoldAppContextProviderProps = React.PropsWithChildren<{
 
 const DefoldAppContext = React.createContext<DefoldAppContext | undefined>(undefined);
 
-export const DefoldAppContextProvider: React.FC<DefoldAppContextProviderProps> = memo(
+const DefoldAppContextProvider: React.FC<DefoldAppContextProviderProps> = memo(
   function DefoldAppContextProvider({namespace, data, children}) {
     const ref = useRef(data)
     const [context] = useState<DefoldAppContext>({
@@ -71,7 +71,7 @@ export const DefoldAppContextProvider: React.FC<DefoldAppContextProviderProps> =
   }
 );
 
-export const useDefoldAppContext = ({ onReceive }: { onReceive?: (command: string, payload: Record<string, unknown>) => void }) => {
+const useDefoldAppContext = ({ onReceive }: { onReceive?: (command: string, payload: Record<string, unknown>) => void }) => {
   const context = React.useContext(DefoldAppContext);
 
   useEffect(() => {
@@ -86,3 +86,6 @@ export const useDefoldAppContext = ({ onReceive }: { onReceive?: (command: strin
   if (context === undefined) throw new Error('useDefoldAppContext must be used within a useDefoldAppContext')
   return { data: context.data.current, send };
 }
+
+export { DefoldAppContextProvider, useDefoldAppContext };
+export type { DefoldAppContextProviderProps };
