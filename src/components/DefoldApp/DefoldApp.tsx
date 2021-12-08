@@ -123,17 +123,7 @@ export const DefoldApp: React.FC<DefoldAppProps> = memo(
       loadApp();
 
       return((): void => {
-        /*
-        if (window.Module?.calledRun) {
-          window.Module?.pauseMainLoop();
-          if (window.Module) window.Module = undefined;
-          if (window.EngineLoader) window.EngineLoader = undefined;
-          if (window.FileLoader) window.FileLoader = undefined;
-          if (window.GameArchiveLoader) window.GameArchiveLoader = undefined;
-          if (window.Progress) window.Progress = undefined;
-          if (window.CanvasInput) window.CanvasInput = undefined;
-        }
-        */
+        if (!window.Module) return;
       });
     }, [complete]);
     

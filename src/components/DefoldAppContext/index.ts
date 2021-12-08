@@ -1,1 +1,1 @@
-export * from './DefoldAppContext';
+export { DefoldAppContextProvider, useDefoldAppContext } from './DefoldAppContext';

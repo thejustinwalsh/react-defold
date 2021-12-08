@@ -1,1 +1,1 @@
-export * from "./DefoldApp";
+export { DefoldApp } from "./DefoldApp";
