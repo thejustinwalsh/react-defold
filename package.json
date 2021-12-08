@@ -1,6 +1,6 @@
 {
   "name": "react-defold",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Defold component for react",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
