@@ -35758,13 +35758,40 @@ exports.DefoldApp = DefoldApp;
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
-Object.defineProperty(exports, "DefoldApp", ({
-    enumerable: true,
-    get: function() {
-        return _defoldApp.DefoldApp;
+var _defoldApp = _interopRequireWildcard(__webpack_require__(3664));
+Object.keys(_defoldApp).forEach(function(key) {
+    if (key === "default" || key === "__esModule") return;
+    if (key in exports && exports[key] === _defoldApp[key]) return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function() {
+            return _defoldApp[key];
+        }
+    });
+});
+function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
+        return obj;
+    } else {
+        var newObj = {
+        };
+        if (obj != null) {
+            for(var key in obj){
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {
+                    };
+                    if (desc.get || desc.set) {
+                        Object.defineProperty(newObj, key, desc);
+                    } else {
+                        newObj[key] = obj[key];
+                    }
+                }
+            }
+        }
+        newObj.default = obj;
+        return newObj;
     }
-}));
-var _defoldApp = __webpack_require__(3664);
+}
 
 
 /***/ }),
@@ -35984,7 +36011,6 @@ var DefoldAppContextProvider = (0, _react).memo(function DefoldAppContextProvide
         value: context
     }, children);
 });
-exports.DefoldAppContextProvider = DefoldAppContextProvider;
 var useDefoldAppContext = function(param) {
     var onReceive = param.onReceive;
     var context = _react.default.useContext(DefoldAppContext);
@@ -36008,6 +36034,7 @@ var useDefoldAppContext = function(param) {
         send: send
     };
 };
+exports.DefoldAppContextProvider = DefoldAppContextProvider;
 exports.useDefoldAppContext = useDefoldAppContext;
 
 
@@ -36358,4 +36385,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.c3a4b21da3772fe5033e.js.map
+//# sourceMappingURL=main.6d5b99af8a4ae6e0f855.js.map
