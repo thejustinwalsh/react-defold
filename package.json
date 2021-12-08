@@ -37,7 +37,7 @@
     "prebuild": "rimraf dist/*",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "webpack --config webpack.lib.js --mode production",
-    "build:esm": "tsc -p tsconfig.json && rimraf dist/esm/hooks",
+    "build:esm": "tsc -p tsconfig.json",
     "postbuild": "rimraf dist/types/hooks",
     "docs": "rollup -c ./docs/rollup.config.js -w & npx serve ./docs -n",
     "docs:build": "rollup -c ./docs/rollup.config.js",
