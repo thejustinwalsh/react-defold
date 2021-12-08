@@ -11,9 +11,7 @@ function update(self, dt)
 	if (self.has_context) then
 		local msg = {}
 		local raw = html5.run("window.DefoldApp.out()");
-		print("message", raw);
 		if raw ~= '' then msg = JSON.decode(raw) end
-		print("decode", msg);
 		if msg.command == 'tint' then
 			go.set("#background", "tint", vmath.vector4(msg.payload.r, msg.payload.g, msg.payload.b, 1))
 		end

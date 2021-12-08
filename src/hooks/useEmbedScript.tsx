@@ -22,17 +22,13 @@ export function useEmbedScript(script: string, ref?: React.MutableRefObject<null
     if (exists) exists.remove();
     parent.appendChild(loader);
 
-    const errorTimer = setTimeout(() => {
-      setError(true);
-    }, timeout);
-
     return () => {
       loader.onload = null;
       loader.onreadystatechange = () => void 0;
-      clearTimeout(errorTimer);
       document.body.removeChild(loader);
     };
   }, []);
 
+  console.log("useEmbedScript", loading, error, !loading && !error);
   return { loading, error, complete: !loading && !error };
 }
