@@ -35622,9 +35622,6 @@ Object.defineProperty(exports, "__esModule", ({
 exports.DefoldApp = void 0;
 var _react = _interopRequireWildcard(__webpack_require__(7294));
 var _useEmbedScript = __webpack_require__(2100);
-function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-}
 function _interopRequireWildcard(obj) {
     if (obj && obj.__esModule) {
         return obj;
@@ -35648,45 +35645,14 @@ function _interopRequireWildcard(obj) {
         return newObj;
     }
 }
-function _iterableToArrayLimit(arr, i) {
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-    try {
-        for(var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-}
 var UniqueCanvasId = 0;
 var DefoldApp = (0, _react).memo(function DefoldApp(param) {
-    var root = param.root, app = param.app, width = param.width, height = param.height, _fullscreen = param.fullscreen, fullscreen = _fullscreen === void 0 ? false : _fullscreen;
-    var ref2 = _slicedToArray((0, _react).useState(function() {
-        return "canvas-".concat(UniqueCanvasId++);
-    }), 1), id = ref2[0];
+    var root = param.root, app = param.app, width = param.width, height = param.height, _id = param.id, id = _id === void 0 ? "canvas" : _id, _fullscreen = param.fullscreen, fullscreen = _fullscreen === void 0 ? false : _fullscreen;
     var canvas = (0, _react).useRef(null);
     var parent = (0, _react).useRef(null);
     var ref1 = (0, _useEmbedScript).useEmbedScript("".concat(root, "/dmloader.js")), loading = ref1.loading, error = ref1.error, complete = ref1.complete;
     (0, _react).useEffect(function() {
-        var ref3;
+        var ref2;
         if (!complete) return;
         function loadApp() {
             var Module = window.Module;
@@ -35716,12 +35682,13 @@ var DefoldApp = (0, _react).memo(function DefoldApp(param) {
         }
         var styles = document.createElement("style");
         styles.innerHTML = "\n        canvas:focus, canvas:active {\n          outline: none;\n          border: 0;\n          ie-dummy: expression(this.hideFocus=true);\n          -moz-outline-style: none;\n        }\n      \n        #".concat(id, "-container, #defold-progress {\n          -webkit-tap-highlight-color: rgba(0,0,0,0);\n          -webkit-touch-callout: none;\n          -webkit-user-select: none;\n          -khtml-user-select: none;\n          -moz-user-select: none;\n          -ms-user-select: none;\n          user-select: none;\n        }\n      \n        .canvas-app-progress {\n          position: absolute;\n          background-color: #d1dbeb;\n          height: 6px;\n          margin-top: -6px;\n          width: 100%;\n        }\n      \n        .canvas-app-progress-bar {\n          font-size: 12px;\n          height: 6px;\n          color: rgb(255, 255, 255);\n          background-color: #1a72eb;\n          text-align: center;\n          line-height: 20px;\n        }\n      ");
-        (ref3 = parent.current) === null || ref3 === void 0 ? void 0 : ref3.appendChild(styles);
+        (ref2 = parent.current) === null || ref2 === void 0 ? void 0 : ref2.appendChild(styles);
         loadApp();
         return function() {
             if (!window.Module) return;
         };
     }, [
+        id,
         complete
     ]);
     return _react.default.createElement("div", {
@@ -36385,4 +36352,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.6d5b99af8a4ae6e0f855.js.map
+//# sourceMappingURL=main.99baee7c9ad9172f59da.js.map
