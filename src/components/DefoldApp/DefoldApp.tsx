@@ -24,6 +24,8 @@ declare global {
 }
 
 interface DefoldAppProps {
+  /** The id of the application (unique) */
+  id?: string;
   /** The root path to the compiled defold app (parent directory) */
   root: string;
   /** The name od the defold app */
@@ -39,8 +41,7 @@ interface DefoldAppProps {
 let UniqueCanvasId = 0;
 
 const DefoldApp: React.FC<DefoldAppProps> = memo(
-  function DefoldApp({ root, app, width, height, fullscreen = false }) {
-    const [ id ] = useState(() => `canvas-${UniqueCanvasId++}`);
+  function DefoldApp({ root, app, width, height, id = "canvas", fullscreen = false }) {
     const canvas = useRef<HTMLCanvasElement>(null);
     const parent = useRef<HTMLDivElement>(null);
     const { loading, error, complete } = useEmbedScript(`${root}/dmloader.js`);
@@ -125,7 +126,7 @@ const DefoldApp: React.FC<DefoldAppProps> = memo(
       return((): void => {
         if (!window.Module) return;
       });
-    }, [complete]);
+    }, [id, complete]);
     
     return (
       <div ref={parent} id={`${id}-container`} style={{ position: 'relative', width: `${width}px`, height: `${height}px` }}>
