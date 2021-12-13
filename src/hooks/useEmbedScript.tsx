@@ -29,6 +29,5 @@ export function useEmbedScript(script: string, ref?: React.MutableRefObject<null
     };
   }, []);
 
-  console.log("useEmbedScript", loading, error, !loading && !error);
   return { loading, error, complete: !loading && !error };
 }
