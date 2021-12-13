@@ -36100,7 +36100,6 @@ function useEmbedScript(script, ref) {
             document.body.removeChild(loader);
         };
     }, []);
-    console.log("useEmbedScript", loading, error, !loading && !error);
     return {
         loading: loading,
         error: error,
@@ -36352,4 +36351,4 @@ if (false) {}
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.99baee7c9ad9172f59da.js.map
+//# sourceMappingURL=main.660a748671e68fb8920d.js.map
